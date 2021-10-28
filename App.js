@@ -1,12 +1,20 @@
-import { StatusBar } from 'expo-status-bar';
 import React from 'react';
-import { StyleSheet, Text, View } from 'react-native';
+import { Platform, StyleSheet, View } from 'react-native';
+import AppStack from './AppStack';
+import LoginProvider from './utils/LoginProvider';
+
+const firebaseCredentials = Platform.select({
+  ios: 'https://invertase.link/firebase-ios',
+  android: 'https://invertase.link/firebase-android',
+});
+
 
 export default function App() {
   return (
     <View style={styles.container}>
-      <Text>Open up App.js to start working on your app!</Text>
-      <StatusBar style="auto" />
+      <LoginProvider>
+        <AppStack />
+      </LoginProvider>
     </View>
   );
 }
@@ -14,8 +22,6 @@ export default function App() {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
+    backgroundColor: '#000000'
+  }
 });
